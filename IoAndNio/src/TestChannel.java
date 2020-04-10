@@ -7,8 +7,11 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Map;
+import java.util.Set;
 
 public class TestChannel {
     @Test
@@ -145,36 +148,60 @@ public class TestChannel {
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         FileChannel channel1 = null;
-
+        FileChannel channel2 = null;
         try {
-            RandomAccessFile raf1 = new RandomAccessFile("1.txt","rw");
+            //分散读取
+            RandomAccessFile raf1 = new RandomAccessFile("1.txt", "rw");
             channel1 = raf1.getChannel();
 
             ByteBuffer buf1 = ByteBuffer.allocate(100);
             ByteBuffer buf2 = ByteBuffer.allocate(1024);
 
-            ByteBuffer[] bufs = {buf1,buf2};
+            ByteBuffer[] bufs = {buf1, buf2};
             channel1.read(bufs);
 
-            for (ByteBuffer byteBuffer : bufs){
+            for (ByteBuffer byteBuffer : bufs) {
                 byteBuffer.flip();
             }
 
-            System.out.println(new String(bufs[0].array(),0,bufs[0].limit()));
+            System.out.println(new String(bufs[0].array(), 0, bufs[0].limit()));
             System.out.println("----------------------------------");
-            System.out.println(new String(bufs[1].array(),0,bufs[1].limit()));
+            System.out.println(new String(bufs[1].array(), 0, bufs[1].limit()));
+
+            //聚集写入
+            RandomAccessFile raf2 = new RandomAccessFile("2.txt", "rw");
+            channel2 = raf2.getChannel();
+            channel2.write(bufs);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (channel1 != null){
+            if (channel1 != null) {
                 try {
                     channel1.close();
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+            if (channel2 != null) {
+                try {
+                    channel2.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Test
+    public void test5(){
+        Map<String,Charset> map = Charset.availableCharsets();
+
+        Set<Map.Entry<String,Charset>> set = map.entrySet();
+
+        for (Map.Entry<String,Charset> entry : set) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
         }
     }
 }
