@@ -146,9 +146,9 @@ public class TestChannel {
 
     @Test
     public void test4(){
-        FileChannel channel1 = null;
-        RandomAccessFile raf1 = new RandomAccessFile("1.txt","rw");
-        ByteBuffer buf1 = ByteBuffer.allocate(100);
-        ByteBuffer buf2 = ByteBuffer.allocate(1024);
+        //RandomAccessFile raf1 = new RandomAccessFile("1.jpeg","rw");
+
+        //ByteBuffer buf1 = ByteBuffer.allocate(100);
+        //ByteBuffer buf2 = ByteBuffer.allocate(1024);
     }
 }
