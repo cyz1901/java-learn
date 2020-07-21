@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IoAndNio/IoAndNio.iml" filepath="$PROJECT_DIR$/IoAndNio/IoAndNio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Scala函数式编程习题/Scala函数式编程习题.iml" filepath="$PROJECT_DIR$/Scala函数式编程习题/Scala函数式编程习题.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-learning.iml" filepath="$PROJECT_DIR$/java-learning.iml" />
       <module fileurl="file://$PROJECT_DIR$/part 14/part 14.iml" filepath="$PROJECT_DIR$/part 14/part 14.iml" />
       <module fileurl="file://$PROJECT_DIR$/part 4/part 4.iml" filepath="$PROJECT_DIR$/part 4/part 4.iml" />
