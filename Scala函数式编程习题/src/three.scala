@@ -83,9 +83,17 @@ object List { // `List` companion object. Contains functions for creating and wo
   def length[A](l: List[A]): Int =
     foldRight(l,0)((x,y)=>(y+1))
 
-  def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B = ???
+  def foldLeft[A,B](l: List[A], z: B)(f: (B, A) => B): B =
+    l match{
+      case Nil => z
+      case Cons(x,y) => foldLeft(y,f(z,x))(f)
+    }
 
-  def map[A,B](l: List[A])(f: A => B): List[B] = ???
+  def map[A,B](l: List[A])(f: A => B): List[B] =
+    l match{
+      case Nil => Nil
+      case Cons(x,y) => Cons()
+    }
 
   def main(args: Array[String]): Unit = {
 
