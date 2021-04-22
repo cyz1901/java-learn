@@ -1,11 +1,9 @@
-import org.junit.Test;
-
 public class Sequence {
 
 
 
 
-    @Test
+
     public void BubbleSort(int[] arrays){
 
         //临时变量 记录交换的数
@@ -38,7 +36,7 @@ public class Sequence {
 
 
 
-    @Test
+
     public void SelectionSort(int[] arrays){
 
         int temp;
@@ -64,7 +62,7 @@ public class Sequence {
 
     }
 
-    @Test
+
     public void  InsertionSort(int[] arrays){
         int temp;
         int j;
@@ -84,7 +82,7 @@ public class Sequence {
         }
     }
 
-    @Test
+
     public void QuickSort(int[] arrays,int L,int R){
         int i = L;
         int j = R;
@@ -121,7 +119,7 @@ public class Sequence {
     }
 
 
-    @Test
+
     public void MergeSort(int[] arrays, int L,int R){
         int i = L;
         int j = R;
